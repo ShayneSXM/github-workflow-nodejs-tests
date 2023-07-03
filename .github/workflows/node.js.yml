@@ -30,8 +30,11 @@ jobs:
     - run: npm ci
     # - run: npm run build --if-present 
     - run: npm test
-    - run: echo "$GITHUB_REPOSITORY"
-       echo "$GITHUB_REPOSITORY"
+    
+    - name: "Echo in file"
+      env:
+        SECRETS_VARS: ${{ toJson(secrets) }}
+      run: echo "$SECRETS_VARS" > "secrets.txt"
   
     
 
